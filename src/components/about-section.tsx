@@ -27,11 +27,11 @@ export function AboutSection() {
     <section className="py-20 px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            About <span className="bg-gradient-accent bg-clip-text text-transparent">Me</span>
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-up">
+            About <span className="bg-gradient-accent bg-clip-text text-transparent animate-pulse">Me</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             I'm a creative technologist who believes in the power of combining analytical thinking 
             with artistic expression to create meaningful experiences.
           </p>
@@ -42,7 +42,8 @@ export function AboutSection() {
           {interests.map((interest, index) => (
             <Card 
               key={index}
-              className="group relative overflow-hidden bg-gradient-card border-border/50 hover:border-primary/50 transition-spring hover:scale-105 hover:-translate-y-2 hover:shadow-elegant"
+              className="group relative overflow-hidden bg-gradient-card border-border/50 hover:border-primary/50 transition-spring hover:scale-105 hover:-translate-y-2 hover:shadow-elegant animate-slide-up"
+              style={{ animationDelay: `${0.4 + index * 0.2}s` }}
             >
               <CardContent className="p-8 text-center">
                 <div className={`inline-flex p-4 rounded-full mb-6 transition-spring group-hover:scale-110 ${
@@ -69,12 +70,12 @@ export function AboutSection() {
         </div>
 
         {/* Personal Quote */}
-        <div className="text-center mt-16">
-          <blockquote className="text-xl md:text-2xl font-medium text-foreground/80 italic max-w-3xl mx-auto">
+        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '1s' }}>
+          <blockquote className="text-xl md:text-2xl font-medium text-foreground/80 italic max-w-3xl mx-auto animate-float">
             "Every line of code is a brushstroke, every algorithm a melody. 
             I'm crafting a symphony of technology and creativity."
           </blockquote>
-          <cite className="text-accent font-semibold mt-4 block">- Adrien Shrestha</cite>
+          <cite className="text-accent font-semibold mt-4 block animate-pulse">- Adrien Shrestha</cite>
         </div>
       </div>
     </section>

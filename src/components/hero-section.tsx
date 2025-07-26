@@ -19,38 +19,67 @@ export function HeroSection() {
       
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <div className="space-y-6 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            <span className="bg-gradient-accent bg-clip-text text-transparent">
-              Sabja Shrestha
-            </span>
-          </h1>
+        <div className="space-y-8">
+          {/* Animated Name */}
+          <div className="overflow-hidden">
+            <h1 className="text-6xl md:text-8xl font-black leading-tight animate-slide-up">
+              <span className="relative inline-block">
+                <span 
+                  className="bg-gradient-to-r from-primary via-accent to-primary bg-300% bg-clip-text text-transparent animate-gradient-shift"
+                  style={{ backgroundSize: '300% 100%' }}
+                >
+                  Sabja
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 bg-clip-text text-transparent animate-text-shimmer" 
+                      style={{ backgroundSize: '200% 100%' }}>
+                  Sabja
+                </span>
+              </span>
+              <br />
+              <span className="relative inline-block animate-float">
+                <span 
+                  className="bg-gradient-to-r from-accent via-primary to-accent bg-300% bg-clip-text text-transparent animate-gradient-shift"
+                  style={{ backgroundSize: '300% 100%', animationDelay: '0.5s' }}
+                >
+                  Shrestha
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 bg-clip-text text-transparent animate-text-shimmer"
+                      style={{ backgroundSize: '200% 100%', animationDelay: '0.8s' }}>
+                  Shrestha
+                </span>
+              </span>
+            </h1>
+          </div>
           
-          <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-            AKA <span className="text-accent font-bold">Adrien Shrestha</span>
-          </p>
+          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl md:text-3xl text-muted-foreground font-bold tracking-wider">
+              AKA <span className="text-accent font-black animate-pulse">Adrien Shrestha</span>
+            </p>
+          </div>
           
-          <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            A passionate <span className="text-primary font-semibold">BCsIT student</span> at 
-            <span className="text-accent font-semibold"> Softwarica College</span>, 
-            exploring the intersection of technology and creativity through 
-            <span className="text-primary font-semibold"> sketching</span> and 
-            <span className="text-accent font-semibold"> guitar</span>.
-          </p>
+          <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
+              A passionate <span className="text-primary font-semibold animate-pulse">BCsIT student</span> at 
+              <span className="text-accent font-semibold"> Softwarica College</span>, 
+              exploring the intersection of technology and creativity through 
+              <span className="text-primary font-semibold"> sketching</span> and 
+              <span className="text-accent font-semibold"> guitar</span>.
+            </p>
+          </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-scale-in" style={{ animationDelay: '0.8s' }}>
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 shadow-glow-primary hover:shadow-glow-primary hover:scale-105 transition-spring"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 shadow-glow-primary hover:shadow-glow-primary hover:scale-110 transition-spring group"
             >
-              Get In Touch
+              <span className="group-hover:animate-pulse">Get In Touch</span>
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-accent/50 text-accent hover:bg-accent/10 hover:border-accent font-semibold px-8 py-3 hover:scale-105 transition-spring"
+              className="border-accent/50 text-accent hover:bg-accent/10 hover:border-accent font-semibold px-8 py-3 hover:scale-110 transition-spring group"
             >
-              View My Work
+              <span className="group-hover:animate-bounce">View My Work</span>
             </Button>
           </div>
         </div>
