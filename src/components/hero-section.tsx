@@ -25,36 +25,30 @@ export function HeroSection() {
             <h1 className="text-6xl md:text-8xl font-black leading-tight animate-slide-up">
               <span className="relative inline-block">
                 <span 
-                  className="bg-gradient-to-r from-primary via-accent to-primary bg-300% bg-clip-text text-transparent animate-gradient-shift"
+                  className="bg-gradient-to-r from-accent via-primary to-accent bg-300% bg-clip-text text-transparent animate-gradient-shift"
                   style={{ backgroundSize: '300% 100%' }}
                 >
-                  Sabja
+                  Adrien
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 bg-clip-text text-transparent animate-text-shimmer" 
+                <span className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/60 to-white/30 bg-clip-text text-transparent animate-text-shimmer" 
                       style={{ backgroundSize: '200% 100%' }}>
-                  Sabja
+                  Adrien
                 </span>
               </span>
               <br />
               <span className="relative inline-block animate-float">
                 <span 
-                  className="bg-gradient-to-r from-accent via-primary to-accent bg-300% bg-clip-text text-transparent animate-gradient-shift"
+                  className="bg-gradient-to-r from-primary via-accent to-primary bg-300% bg-clip-text text-transparent animate-gradient-shift"
                   style={{ backgroundSize: '300% 100%', animationDelay: '0.5s' }}
                 >
                   Shrestha
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/40 to-white/20 bg-clip-text text-transparent animate-text-shimmer"
+                <span className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/60 to-white/30 bg-clip-text text-transparent animate-text-shimmer"
                       style={{ backgroundSize: '200% 100%', animationDelay: '0.8s' }}>
                   Shrestha
                 </span>
               </span>
             </h1>
-          </div>
-          
-          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <p className="text-xl md:text-3xl text-muted-foreground font-bold tracking-wider">
-              AKA <span className="text-accent font-black animate-pulse">Adrien Shrestha</span>
-            </p>
           </div>
           
           <div className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
