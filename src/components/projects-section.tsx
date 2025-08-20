@@ -2,8 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function ProjectsSection() {
+  const { ref: headerRef, isInView: headerInView } = useScrollAnimation();
+  const { ref: reactRef, isInView: reactInView } = useScrollAnimation({ delay: 0.2 });
+  const { ref: kotlinRef, isInView: kotlinInView } = useScrollAnimation({ delay: 0.4 });
+
   const reactProjects = [
     {
       title: "Blissful Cakes",
@@ -32,7 +38,13 @@ export function ProjectsSection() {
     <section className="min-h-screen py-20 px-6 bg-gradient-to-br from-background via-background to-accent/5">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <motion.div 
+          ref={headerRef}
+          initial={{ opacity: 0, y: 50 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-6xl font-black mb-6">
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-300% bg-clip-text text-transparent animate-gradient-shift">
               My Projects
@@ -42,10 +54,16 @@ export function ProjectsSection() {
             A showcase of my development journey, featuring web applications built with React & Vite, 
             and mobile apps crafted with Kotlin.
           </p>
-        </div>
+        </motion.div>
 
         {/* React + Vite Projects */}
-        <div className="mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+        <motion.div 
+          ref={reactRef}
+          initial={{ opacity: 0, x: -100 }}
+          animate={reactInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center animate-float">
               <span className="text-2xl">⚛️</span>
@@ -56,12 +74,19 @@ export function ProjectsSection() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {reactProjects.map((project, index) => (
-              <Card 
-                key={project.title} 
-                className="group bg-gradient-card border-accent/20 hover:border-primary/40 transition-all duration-300 hover:shadow-glow-primary hover:scale-105 animate-scale-in"
-                style={{ animationDelay: `${0.3 + index * 0.1}s` }}
-              >
+            {reactProjects.map((project, index) => {
+              const { ref, isInView } = useScrollAnimation({ delay: 0.1 + index * 0.1 });
+              return (
+                <motion.div
+                  key={project.title}
+                  ref={ref}
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                >
+                  <Card 
+                    className="group bg-gradient-card border-accent/20 hover:border-primary/40 transition-all duration-300 hover:shadow-glow-primary hover:scale-105"
+                  >
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl group-hover:text-primary transition-colors">
@@ -100,12 +125,19 @@ export function ProjectsSection() {
                   </Button>
                 </CardFooter>
               </Card>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Kotlin Projects */}
-        <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        <motion.div 
+          ref={kotlinRef}
+          initial={{ opacity: 0, x: 100 }}
+          animate={kotlinInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center animate-float delay-500">
               <span className="text-2xl">🤖</span>
@@ -116,12 +148,19 @@ export function ProjectsSection() {
           </div>
           
           <div className="grid md:grid-cols-1 max-w-2xl">
-            {kotlinProjects.map((project, index) => (
-              <Card 
-                key={project.title} 
-                className="group bg-gradient-card border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-glow-accent hover:scale-105 animate-scale-in"
-                style={{ animationDelay: `${0.5 + index * 0.1}s` }}
-              >
+            {kotlinProjects.map((project, index) => {
+              const { ref, isInView } = useScrollAnimation({ delay: 0.2 + index * 0.1 });
+              return (
+                <motion.div
+                  key={project.title}
+                  ref={ref}
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                >
+                  <Card 
+                    className="group bg-gradient-card border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-glow-accent hover:scale-105"
+                  >
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl group-hover:text-accent transition-colors">
@@ -161,17 +200,29 @@ export function ProjectsSection() {
                   </Button>
                 </CardFooter>
               </Card>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Floating Code Elements */}
-        <div className="absolute top-20 right-20 opacity-5 animate-float delay-1000">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.05, scale: 1 }}
+          transition={{ duration: 2, delay: 1 }}
+          className="absolute top-20 right-20 animate-float delay-1000"
+        >
           <div className="text-6xl">{'<>'}</div>
-        </div>
-        <div className="absolute bottom-40 left-10 opacity-5 animate-float delay-2000">
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.05, scale: 1 }}
+          transition={{ duration: 2, delay: 1.5 }}
+          className="absolute bottom-40 left-10 animate-float delay-2000"
+        >
           <div className="text-4xl font-mono">{'{ }'}</div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

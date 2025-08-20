@@ -1,7 +1,13 @@
 import { SocialButton } from "@/components/ui/social-button";
 import { Instagram, Music, Camera, PaintBucket } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function SocialSection() {
+  const { ref: headerRef, isInView: headerInView } = useScrollAnimation();
+  const { ref: socialRef, isInView: socialInView } = useScrollAnimation({ delay: 0.2 });
+  const { ref: contactRef, isInView: contactInView } = useScrollAnimation({ delay: 0.4 });
+
   const socialLinks = [
     {
       icon: <Instagram className="w-5 h-5" />,
@@ -39,7 +45,13 @@ export function SocialSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Section Header */}
-        <div className="mb-12 animate-fade-in">
+        <motion.div 
+          ref={headerRef}
+          initial={{ opacity: 0, y: 50 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-12"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-up">
             Let's <span className="bg-gradient-accent bg-clip-text text-transparent animate-pulse">Connect</span>
           </h2>
@@ -47,23 +59,41 @@ export function SocialSection() {
             Follow my journey through technology, art, and music. 
             Let's build something amazing together!
           </p>
-        </div>
+        </motion.div>
 
         {/* Social Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center animate-scale-in" style={{ animationDelay: '0.4s' }}>
+        <motion.div 
+          ref={socialRef}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={socialInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center"
+        >
           {socialLinks.map((social, index) => (
-            <SocialButton
+            <motion.div
               key={index}
-              icon={social.icon}
-              label={social.label}
-              href={social.href}
-              variant={social.variant}
-            />
+              initial={{ opacity: 0, y: 30 }}
+              animate={socialInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+            >
+              <SocialButton
+                icon={social.icon}
+                label={social.label}
+                href={social.href}
+                variant={social.variant}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Contact Info */}
-        <div className="mt-16 p-8 bg-gradient-card rounded-2xl border border-border/50 backdrop-blur-sm animate-slide-up hover:shadow-elegant transition-spring group" style={{ animationDelay: '0.6s' }}>
+        <motion.div 
+          ref={contactRef}
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={contactInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-16 p-8 bg-gradient-card rounded-2xl border border-border/50 backdrop-blur-sm hover:shadow-elegant transition-spring group"
+        >
           <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-smooth">Get In Touch</h3>
           <p className="text-muted-foreground mb-6">
             Have a project in mind or just want to chat about tech and creativity? 
@@ -87,7 +117,7 @@ export function SocialSection() {
             <p>📧 shresthasabja0@gmail.com</p>
             <p>📱 +977 9841271385</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
