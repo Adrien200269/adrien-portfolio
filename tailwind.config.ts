@@ -115,6 +115,10 @@ export default {
 				'text-shimmer': {
 					'0%': { backgroundPosition: '-200% center' },
 					'100%': { backgroundPosition: '200% center' }
+				},
+				'slide-down': {
+					'0%': { transform: 'translateY(-100%)', opacity: '0' },
+					'100%': { transform: 'translateY(100vh)', opacity: '1' }
 				}
 			},
 			animation: {
@@ -125,7 +129,8 @@ export default {
 				'slide-up': 'slide-up 0.8s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'gradient-shift': 'gradient-shift 3s ease infinite',
-				'text-shimmer': 'text-shimmer 2s linear infinite'
+				'text-shimmer': 'text-shimmer 2s linear infinite',
+				'slide-down': 'slide-down 8s linear infinite'
 			}
 		}
 	},

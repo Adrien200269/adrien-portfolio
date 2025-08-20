@@ -17,6 +17,54 @@ export function HeroSection() {
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse delay-1000" />
       
+      {/* Floating Computer Elements */}
+      <div className="absolute top-20 left-20 opacity-10 animate-float">
+        <div className="w-16 h-12 bg-primary/30 rounded-sm relative">
+          <div className="absolute inset-1 bg-accent/40 rounded-sm">
+            <div className="w-full h-1 bg-primary/60 mt-1 animate-pulse"></div>
+            <div className="w-3/4 h-1 bg-accent/60 mt-1 animate-pulse delay-300"></div>
+            <div className="w-1/2 h-1 bg-primary/60 mt-1 animate-pulse delay-600"></div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Circuit Pattern */}
+      <div className="absolute top-1/3 right-20 opacity-10 animate-pulse delay-700">
+        <svg width="80" height="80" viewBox="0 0 80 80" className="text-primary">
+          <path d="M20 20 L60 20 L60 60 L20 60 Z" stroke="currentColor" strokeWidth="2" fill="none"/>
+          <circle cx="20" cy="20" r="3" fill="currentColor" className="animate-ping"/>
+          <circle cx="60" cy="20" r="3" fill="currentColor" className="animate-ping delay-300"/>
+          <circle cx="60" cy="60" r="3" fill="currentColor" className="animate-ping delay-600"/>
+          <circle cx="20" cy="60" r="3" fill="currentColor" className="animate-ping delay-900"/>
+        </svg>
+      </div>
+      
+      {/* Binary Rain Effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 text-primary/10 text-xs font-mono animate-slide-down">
+          <div className="animate-pulse">1010101</div>
+          <div className="animate-pulse delay-100">0110010</div>
+          <div className="animate-pulse delay-200">1100101</div>
+        </div>
+        <div className="absolute top-0 right-1/3 text-accent/10 text-xs font-mono animate-slide-down delay-500">
+          <div className="animate-pulse delay-300">1011001</div>
+          <div className="animate-pulse delay-400">0101110</div>
+          <div className="animate-pulse delay-500">1110010</div>
+        </div>
+      </div>
+      
+      {/* Floating Laptop */}
+      <div className="absolute bottom-20 right-10 opacity-20 animate-float delay-1000">
+        <div className="w-20 h-14 bg-gradient-to-br from-primary/40 to-accent/40 rounded-lg relative transform rotate-12">
+          <div className="absolute inset-1 bg-black/60 rounded-md">
+            <div className="w-full h-1 bg-primary/80 mt-1 animate-pulse"></div>
+            <div className="w-2/3 h-1 bg-accent/80 mt-1 animate-pulse delay-200"></div>
+            <div className="w-1/2 h-1 bg-primary/80 mt-1 animate-pulse delay-400"></div>
+          </div>
+          <div className="absolute -bottom-1 left-0 w-20 h-2 bg-gradient-to-r from-primary/30 to-accent/30 rounded-b-lg"></div>
+        </div>
+      </div>
+      
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div className="space-y-8">
